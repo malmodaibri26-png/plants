@@ -5,7 +5,7 @@ struct PlantRow: View {
 
     
     private let sunColor = Color(red: 0.80, green: 0.78, blue: 0.52).opacity(0.68)
-    private let checkGreen = Color(red: 0.48, green: 0.82, blue: 0.66)
+    private let checkGreen = Color(red: 40 / 255, green: 224 / 255, blue: 168 / 255)
     private let waterColor = Color(red: 0.79, green: 0.95, blue: 0.98)
 
     var body: some View {

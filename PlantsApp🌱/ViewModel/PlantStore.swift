@@ -20,7 +20,7 @@ final class PlantStore: ObservableObject {
 
     func add(_ plant: Plant) {
         plants.append(plant)
-        NotificationManager.shared.scheduleReminder(for: plant, hour: 9, minute: 0)
+        NotificationManager.shared.scheduleReminder(for: plant)
     }
 
     func delete(_ plant: Plant) {
@@ -31,7 +31,7 @@ final class PlantStore: ObservableObject {
         guard let index = plants.firstIndex(where: { $0.id == plant.id }) else { return }
         plants[index] = plant
         NotificationManager.shared.cancelReminder(for: plant)
-        NotificationManager.shared.scheduleReminder(for: plant, hour: 9, minute: 0)
+        NotificationManager.shared.scheduleReminder(for: plant)
     }
 
     private func save() {
@@ -44,5 +44,6 @@ final class PlantStore: ObservableObject {
         guard let data = UserDefaults.standard.data(forKey: key),
               let saved = try? JSONDecoder().decode([Plant].self, from: data) else { return }
         plants = saved
+        saved.forEach { NotificationManager.shared.scheduleReminder(for: $0) }
     }
 }
