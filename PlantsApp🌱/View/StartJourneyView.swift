@@ -6,7 +6,7 @@ struct StartJourneyView: View {
     var body: some View {
      
             VStack(alignment: .leading, spacing: 0) {
-                Text("My Plants 🌱")
+                Text("My Plants")
                     .font(.largeTitle.bold())
                     .foregroundStyle(Color.white)
                     .padding(.horizontal)
