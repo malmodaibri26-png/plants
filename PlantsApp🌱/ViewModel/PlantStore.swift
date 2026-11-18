@@ -17,6 +17,12 @@ final class PlantStore: ObservableObject {
     var doneCount: Int { plants.filter { $0.isDone }.count }
     var isEmpty: Bool { plants.isEmpty }
     var allDone: Bool { !plants.isEmpty && doneCount == total }
+    // في PlantStore.swift
+    var sortedIDs: [Plant.ID] {
+        let pending = plants.filter { !$0.isDone }
+        let done = plants.filter { $0.isDone }
+        return (pending + done).map(\.id)
+    }
 
     func add(_ plant: Plant) {
         plants.append(plant)

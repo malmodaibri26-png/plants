@@ -73,24 +73,27 @@ struct ContentView: View {
 
                     List {
 
-                        ForEach($store.plants) { $plant in
+                        ForEach(store.sortedIDs, id: \.self) { id in
+                            if let index = store.plants.firstIndex(where: { $0.id == id }) {
+                                let plant = store.plants[index]
 
-                            PlantRow(plant: $plant)
-                                .listRowBackground(Color.black)
-                                .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 0, trailing: 16))
-                                .listRowSeparator(.hidden)
-                                .contentShape(Rectangle())
-                                .onTapGesture { editingPlant = plant }
-                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-
-                                    Button(role: .destructive) {
-                                        withAnimation { store.delete(plant) }
-                                    } label: {
-                                        Image(systemName: "trash")
+                                PlantRow(plant: $store.plants[index])
+                                    .listRowBackground(Color.black)
+                                    .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 0, trailing: 16))
+                                    .listRowSeparator(.hidden)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture { editingPlant = plant }
+                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                        Button(role: .destructive) {
+                                            withAnimation { store.delete(plant) }
+                                        } label: {
+                                            Image(systemName: "trash")
+                                        }
+                                        .tint(.red)
                                     }
-                                    .tint(.red)
-                                }
+                            }
                         }
+                        .animation(.easeInOut, value: store.sortedIDs)
                     }
                     .listStyle(.plain)
                     .scrollContentBackground(.hidden)
