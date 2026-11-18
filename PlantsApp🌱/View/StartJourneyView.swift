@@ -3,10 +3,12 @@ import SwiftUI
 struct StartJourneyView: View {
     var onStart: () -> Void
 
+    private let prototypeTextColor = Color(red: 219 / 255, green: 210 / 255, blue: 210 / 255)
+
     var body: some View {
      
             VStack(alignment: .leading, spacing: 0) {
-                Text("My Plants")
+                Text("My Plants 🌱")
                     .font(.largeTitle.bold())
                     .foregroundStyle(Color.white)
                     .padding(.horizontal)
@@ -25,11 +27,11 @@ struct StartJourneyView: View {
 
                     Text("Start your plant journey!")
                         .font(.title3.bold())
-                        .foregroundStyle(Color.white)
+                        .foregroundStyle(prototypeTextColor)
 
-                    Text("Now all your plants will be in one place and we will help you take care of them :) 🪴")
+                    Text("Now all your plants will be in one place and we will help you take care of them :)🪴")
                         .font(.footnote)
-                        .foregroundStyle(Color.gray)
+                        .foregroundStyle(prototypeTextColor)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 60)
 
