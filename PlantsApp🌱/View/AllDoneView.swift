@@ -7,13 +7,13 @@ struct AllDoneView: View {
 
             ZStack {
                 Circle()
-                    .fill(Color(white: 0.08))
-                    .frame(width: 200, height: 200)
+                    .fill(Color(red: 0.078, green: 0.078, blue: 0.102).opacity(0.58))
+                    .frame(width: 219, height: 219)
 
                 Image("plantMascotWink")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 140, height: 140)
+                    .frame(width: 220, height: 220)
             }
 
             Text("All Done! 🎉")

@@ -1,6 +1,8 @@
+
 import SwiftUI
 
 struct ContentView: View {
+
     @StateObject private var store = PlantStore()
     @AppStorage("hasStarted") private var hasStarted = false
     @State private var showAdd = false
@@ -9,6 +11,7 @@ struct ContentView: View {
     private let green = Color(red: 0.24, green: 0.48, blue: 0.40)
 
     var body: some View {
+
         Group {
             if store.isEmpty && !hasStarted {
                 StartJourneyView { showAdd = true }
@@ -32,11 +35,15 @@ struct ContentView: View {
             .presentationBackground(Color(red: 0.11, green: 0.11, blue: 0.118))
         }
     }
+
     private var plantsScreen: some View {
+
         ZStack(alignment: .bottomTrailing) {
+
             Color.black.ignoresSafeArea()
 
             VStack(alignment: .leading, spacing: 0) {
+
                 Text("My Plants 🌱")
                     .font(.largeTitle.bold())
                     .foregroundStyle(Color.white)
@@ -47,25 +54,36 @@ struct ContentView: View {
                 Divider().overlay(Color.white.opacity(0.15))
 
                 if store.isEmpty {
+
                     Spacer()
+
                     Text("No reminders set yet..")
                         .font(.subheadline.weight(.medium))
                         .foregroundStyle(Color.gray)
                         .frame(maxWidth: .infinity)
+
                     Spacer()
+
                 } else if store.allDone {
+
                     AllDoneView()
+
                 } else {
+
                     TodayProgressView(done: store.doneCount, total: store.total)
 
                     List {
+
                         ForEach($store.plants) { $plant in
+
                             PlantRow(plant: $plant)
                                 .listRowBackground(Color.black)
-                                .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
+                                .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 0, trailing: 16))
+                                .listRowSeparator(.hidden)
                                 .contentShape(Rectangle())
                                 .onTapGesture { editingPlant = plant }
                                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+
                                     Button(role: .destructive) {
                                         withAnimation { store.delete(plant) }
                                     } label: {
@@ -82,6 +100,7 @@ struct ContentView: View {
             .animation(.easeInOut, value: store.allDone)
 
             Button { showAdd = true } label: {
+
                 Image(systemName: "plus")
                     .font(.title2.bold())
                     .foregroundStyle(Color.white)
@@ -89,8 +108,10 @@ struct ContentView: View {
                     .background(
                         Circle().fill(
                             LinearGradient(
-                                colors: [Color(red: 0.31, green: 0.62, blue: 0.52),
-                                         Color(red: 0.20, green: 0.50, blue: 0.41)],
+                                colors: [
+                                    Color(red: 0.31, green: 0.62, blue: 0.52),
+                                    Color(red: 0.20, green: 0.50, blue: 0.41)
+                                ],
                                 startPoint: .top,
                                 endPoint: .bottom
                             )
@@ -118,3 +139,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+

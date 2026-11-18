@@ -108,13 +108,13 @@ struct SetReminderView: View {
                 // زر X
                 Button { dismiss() } label: {
                     Image(systemName: "xmark")
-                        .font(.headline)
+                        .font(.system(size: 20, weight: .medium))
                         .foregroundStyle(Color.white)
                         .frame(width: 44, height: 44)
                         .background(
                             Circle().fill(
                                 LinearGradient(
-                                    colors: [Color(white: 0.24), Color(white: 0.10)],
+                                    colors: [Color(white: 0.18), Color(red: 0.10, green: 0.10, blue: 0.10)],
                                     startPoint: .top,
                                     endPoint: .bottom
                                 )
@@ -123,15 +123,16 @@ struct SetReminderView: View {
                         .overlay(
                             Circle().stroke(
                                 LinearGradient(
-                                    colors: [Color.white.opacity(0.55), Color.white.opacity(0.05)],
+                                    colors: [Color.white.opacity(0.45), Color.white.opacity(0.08)],
                                     startPoint: .top,
                                     endPoint: .bottom
                                 ),
-                                lineWidth: 1
+                                lineWidth: 1.2
                             )
                         )
                         .shadow(color: .black.opacity(0.35), radius: 6, y: 4)
                 }
+                
 
                 Spacer()
 
@@ -147,13 +148,13 @@ struct SetReminderView: View {
                     dismiss()
                 } label: {
                     Image(systemName: "checkmark")
-                        .font(.headline)
+                        .font(.system(size: 22, weight: .medium))
                         .foregroundStyle(Color.white)
                         .frame(width: 44, height: 44)
                         .background(
                             Circle().fill(
                                 LinearGradient(
-                                    colors: [Color(red: 0.31, green: 0.62, blue: 0.52), green],
+                                    colors: [Color(red: 0.28, green: 0.58, blue: 0.48), green],
                                     startPoint: .top,
                                     endPoint: .bottom
                                 )
@@ -162,14 +163,14 @@ struct SetReminderView: View {
                         .overlay(
                             Circle().stroke(
                                 LinearGradient(
-                                    colors: [Color.white.opacity(0.55), Color.white.opacity(0.05)],
+                                    colors: [Color.white.opacity(0.45), Color.white.opacity(0.08)],
                                     startPoint: .top,
                                     endPoint: .bottom
                                 ),
-                                lineWidth: 1
+                                lineWidth: 1.2
                             )
                         )
-                        .shadow(color: .black.opacity(0.35), radius: 6, y: 4)
+                        .shadow(color: .black.opacity(0.25), radius: 8, y: 4)
                 }
                 .disabled(!canSave)
                 .opacity(canSave ? 1 : 0.5)
