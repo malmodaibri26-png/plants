@@ -16,20 +16,22 @@ struct ContentView: View {
                 plantsScreen
             }
         }
-        .sheet(isPresented: $showAdd) {
-            SetReminderView { plant in
-                store.add(plant)
-                hasStarted = true
+        .fullScreenCover(isPresented: $showAdd) {
+            DesignSheet {
+                SetReminderView { plant in
+                    store.add(plant)
+                    hasStarted = true
+                }
             }
-            .presentationBackground(Color(red: 0.11, green: 0.11, blue: 0.118))
         }
-        .sheet(item: $editingPlant) { plant in
-            SetReminderView(
-                plant: plant,
-                onSave: { store.update($0) },
-                onDelete: { store.delete(plant) }
-            )
-            .presentationBackground(Color(red: 0.11, green: 0.11, blue: 0.118))
+        .fullScreenCover(item: $editingPlant) { plant in
+            DesignSheet {
+                SetReminderView(
+                    plant: plant,
+                    onSave: { store.update($0) },
+                    onDelete: { store.delete(plant) }
+                )
+            }
         }
     }
 
@@ -96,7 +98,6 @@ struct ContentView: View {
             }
             .animation(.easeInOut, value: store.allDone)
 
-            // الزر خارج الـ VStack، مباشرة داخل الـ ZStack
             AddButton { showAdd = true }
                 .padding(.trailing, 30)
                 .padding(.bottom, 8)
