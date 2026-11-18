@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct ContentView: View {
@@ -7,8 +6,6 @@ struct ContentView: View {
     @AppStorage("hasStarted") private var hasStarted = false
     @State private var showAdd = false
     @State private var editingPlant: Plant?
-
-    private let green = Color(red: 0.24, green: 0.48, blue: 0.40)
 
     var body: some View {
 
@@ -99,38 +96,10 @@ struct ContentView: View {
             }
             .animation(.easeInOut, value: store.allDone)
 
-            Button { showAdd = true } label: {
-
-                Image(systemName: "plus")
-                    .font(.title2.bold())
-                    .foregroundStyle(Color.white)
-                    .frame(width: 56, height: 56)
-                    .background(
-                        Circle().fill(
-                            LinearGradient(
-                                colors: [
-                                    Color(red: 0.31, green: 0.62, blue: 0.52),
-                                    Color(red: 0.20, green: 0.50, blue: 0.41)
-                                ],
-                                startPoint: .top,
-                                endPoint: .bottom
-                            )
-                        )
-                    )
-                    .overlay(
-                        Circle().stroke(
-                            LinearGradient(
-                                colors: [Color.white.opacity(0.55), Color.white.opacity(0.05)],
-                                startPoint: .top,
-                                endPoint: .bottom
-                            ),
-                            lineWidth: 1
-                        )
-                    )
-                    .shadow(color: .black.opacity(0.35), radius: 6, y: 4)
-            }
-            .padding(24)
-            .padding(24)
+            // الزر خارج الـ VStack، مباشرة داخل الـ ZStack
+            AddButton { showAdd = true }
+                .padding(.trailing, 30)
+                .padding(.bottom, 8)
         }
         .preferredColorScheme(.dark)
     }
@@ -139,4 +108,3 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-
