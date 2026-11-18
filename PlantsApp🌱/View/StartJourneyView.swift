@@ -46,6 +46,7 @@ struct StartJourneyView: View {
                     .padding(.top, 30)
                 }
                 .frame(maxWidth: .infinity)
+                .offset(y: 32)
 
                 Spacer()
                 Spacer()
