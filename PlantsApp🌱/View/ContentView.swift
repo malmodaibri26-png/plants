@@ -21,7 +21,7 @@ struct ContentView: View {
                 store.add(plant)
                 hasStarted = true
             }
-            .presentationBackground(Color(red: 0.11, green: 0.11, blue: 0.12))
+            .presentationBackground(Color(red: 0.11, green: 0.11, blue: 0.118))
         }
         .sheet(item: $editingPlant) { plant in
             SetReminderView(
@@ -29,7 +29,7 @@ struct ContentView: View {
                 onSave: { store.update($0) },
                 onDelete: { store.delete(plant) }
             )
-            .presentationBackground(Color(red: 0.11, green: 0.11, blue: 0.12))
+            .presentationBackground(Color(red: 0.11, green: 0.11, blue: 0.118))
         }
     }
     private var plantsScreen: some View {

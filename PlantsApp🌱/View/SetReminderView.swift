@@ -19,9 +19,11 @@ struct SetReminderView: View {
     private let days = ["Every day", "Every 2 days", "Every 3 days", "Once a week", "Every 10 days", "Every 2 weeks"]
     private let amounts = ["20-50 ml", "50-100 ml", "100-200 ml", "200-300 ml"]
     private let lightIcons = ["Full Sun": "sun.max", "Partial Sun": "sun.haze", "Low Light": "moon"]
-
     private let fieldColor = Color(white: 0.17)
-    private let green = Color(red: 0.24, green: 0.48, blue: 0.40)
+    private let green = Color(red: 0.20, green: 0.50, blue: 0.41)   // #338069
+    private let closeColor = Color(red: 0.10, green: 0.10, blue: 0.10) // #1A1A1A
+
+    
 
     init(plant: Plant? = nil,
          onSave: @escaping (Plant) -> Void,
@@ -103,16 +105,37 @@ struct SetReminderView: View {
                 .foregroundStyle(Color.white)
 
             HStack {
+                // زر X
                 Button { dismiss() } label: {
                     Image(systemName: "xmark")
                         .font(.headline)
                         .foregroundStyle(Color.white)
-                        .frame(width: 48, height: 48)
-                        .background(Color(white: 0.2), in: Circle())
+                        .frame(width: 44, height: 44)
+                        .background(
+                            Circle().fill(
+                                LinearGradient(
+                                    colors: [Color(white: 0.24), Color(white: 0.10)],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
+                        )
+                        .overlay(
+                            Circle().stroke(
+                                LinearGradient(
+                                    colors: [Color.white.opacity(0.55), Color.white.opacity(0.05)],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                ),
+                                lineWidth: 1
+                            )
+                        )
+                        .shadow(color: .black.opacity(0.35), radius: 6, y: 4)
                 }
 
                 Spacer()
 
+                // زر ✓
                 Button {
                     var result = plant ?? Plant(name: "", room: "")
                     result.name = name.trimmingCharacters(in: .whitespaces)
@@ -126,11 +149,30 @@ struct SetReminderView: View {
                     Image(systemName: "checkmark")
                         .font(.headline)
                         .foregroundStyle(Color.white)
-                        .frame(width: 48, height: 48)
-                        .background(green, in: Circle())
+                        .frame(width: 44, height: 44)
+                        .background(
+                            Circle().fill(
+                                LinearGradient(
+                                    colors: [Color(red: 0.31, green: 0.62, blue: 0.52), green],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
+                        )
+                        .overlay(
+                            Circle().stroke(
+                                LinearGradient(
+                                    colors: [Color.white.opacity(0.55), Color.white.opacity(0.05)],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                ),
+                                lineWidth: 1
+                            )
+                        )
+                        .shadow(color: .black.opacity(0.35), radius: 6, y: 4)
                 }
                 .disabled(!canSave)
-                .opacity(canSave ? 1 : 0.4)
+                .opacity(canSave ? 1 : 0.5)
             }
         }
     }
