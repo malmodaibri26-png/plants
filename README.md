@@ -37,7 +37,11 @@ Planto is an iOS app that helps you take care of your plants. Add your plants in
 
 
 <img width="371" height="753" alt="Screenshot 1448-06-07 at 11 51 56 PM" src="https://github.com/user-attachments/assets/ce4ebf67-2ce5-43df-98f1-36890118c59b" />
-<img width="309" height="609" alt="Screenshot 1448-06-08 at 10 58 46 AM" src="https://github.com/user-attachments/assets/1fc5c1d7-86a9-4888-884d-c237adaae29f" />
+
+
+
+<img width="379" height="750" alt="Screenshot 1448-06-08 at 11 01 12 AM" src="https://github.com/user-attachments/assets/2c4bc539-9954-4493-afc9-0241039e3f5a" />
+
 <img width="376" height="759" alt="Screenshot 1448-06-07 at 2 18 03 PM" src="https://github.com/user-attachments/assets/0273cc9c-9687-4ef5-88be-09ab0de7917e" />
 <img width="368" height="746" alt="Screenshot 1448-06-07 at 2 15 24 PM" src="https://github.com/user-attachments/assets/09d6e2b9-7dd6-4d98-a51b-a1e96936fea2" />
 
