@@ -19,7 +19,8 @@ struct TodayProgressView: View {
     var body: some View {
         VStack(spacing: 12) {
             Text(message)
-                .font(.footnote)
+                .font(.system(size: 18))
+                .tracking(0.23)
                 .foregroundStyle(Color.white)
                 .multilineTextAlignment(.center)
                 .contentTransition(.opacity)

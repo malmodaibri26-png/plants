@@ -86,8 +86,29 @@ struct ContentView: View {
                     .font(.title2.bold())
                     .foregroundStyle(Color.white)
                     .frame(width: 56, height: 56)
-                    .background(green, in: Circle())
+                    .background(
+                        Circle().fill(
+                            LinearGradient(
+                                colors: [Color(red: 0.31, green: 0.62, blue: 0.52),
+                                         Color(red: 0.20, green: 0.50, blue: 0.41)],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                    )
+                    .overlay(
+                        Circle().stroke(
+                            LinearGradient(
+                                colors: [Color.white.opacity(0.55), Color.white.opacity(0.05)],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            ),
+                            lineWidth: 1
+                        )
+                    )
+                    .shadow(color: .black.opacity(0.35), radius: 6, y: 4)
             }
+            .padding(24)
             .padding(24)
         }
         .preferredColorScheme(.dark)
