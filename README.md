@@ -1,4 +1,4 @@
-# Planto 🌱
+# My Plants
 
 Planto is an iOS app that helps you take care of your plants. Add your plants in one place and get a daily reminder to water them.
 
